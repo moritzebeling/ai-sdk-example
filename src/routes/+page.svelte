@@ -7,7 +7,18 @@
 <main>
   <ul>
     {#each $messages as message}
-      <li>{message.role}: {message.content}</li>
+      {#if message.role === 'assistant' && message?.toolInvocations?.length}
+        <li>
+          {#each message.toolInvocations as toolInvocation}
+            <div>
+              {toolInvocation.toolName}:
+              <pre>{JSON.stringify(toolInvocation?.result, null, 2)}</pre>
+            </div>
+          {/each}
+        </li>
+      {:else}
+        <li>{message.role}: {message.content}</li>
+      {/if}
     {/each}
   </ul>
   <form on:submit={handleSubmit}>
