@@ -25,6 +25,15 @@ export const POST = (async ({ request }) => {
           temperature: 72 + Math.floor(Math.random() * 21) - 10,
         }),
       }),
+      time: tool({
+        description: 'Get the current time',
+        parameters: z.object({
+          empty: z.string().optional().describe('This is an empty parameter'),
+        }),
+        execute: async () => ({
+          time: new Date().toLocaleTimeString(),
+        }),
+      }),
     },
     messages,
   });
