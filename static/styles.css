@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: inherit;
+    border: none;
+    color: inherit;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+a, button {
+    cursor: pointer;
+}
+
+html {
+    font-size: 18px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #000;
+    background-color: #fff;
+}

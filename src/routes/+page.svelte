@@ -1,28 +1,38 @@
-<script>
+<script lang="ts">
+  import Conversation from '$lib/Conversation.svelte';
+  import PromptInput from '$lib/PromptInput.svelte';
   import { useChat } from '@ai-sdk/svelte';
 
   const { input, handleSubmit, messages } = useChat();
 </script>
 
 <main>
-  <ul>
-    {#each $messages as message}
-      {#if message.role === 'assistant' && message?.toolInvocations?.length}
-        <li>
-          {#each message.toolInvocations as toolInvocation}
-            <div>
-              {toolInvocation.toolName}:
-              <pre>{JSON.stringify(toolInvocation?.result, null, 2)}</pre>
-            </div>
-          {/each}
-        </li>
-      {:else}
-        <li>{message.role}: {message.content}</li>
-      {/if}
-    {/each}
-  </ul>
-  <form on:submit={handleSubmit}>
-    <input bind:value={$input} />
-    <button type="submit">Send</button>
-  </form>
+  <Conversation messages={$messages} />
 </main>
+
+<aside>
+  <div>
+    <PromptInput bind:input={$input} on:submit={handleSubmit} />
+  </div>
+</aside>
+
+<style>
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+    padding-bottom: 8rem;
+  }
+  aside {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+  }
+  aside div {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+</style>
