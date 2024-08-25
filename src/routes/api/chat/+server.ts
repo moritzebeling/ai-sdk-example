@@ -4,6 +4,7 @@ import { streamText, tool } from 'ai';
 import type { RequestHandler } from './$types';
 
 import { env } from '$env/dynamic/private';
+import { team } from '$lib/data/team';
 
 const openai = createOpenAI({
   apiKey: env.OPENAI_API_KEY ?? '',
@@ -65,6 +66,13 @@ export const POST = (async ({ request }) => {
           element: element.toLowerCase(),
           color
         }),
+      }),
+      team: tool({
+        description: 'Get a list of people who is in the team of Jung von Matt TECH (JvM)',
+        parameters: z.object({
+          empty: z.string().optional().describe('This is an empty parameter and can be ignored'),
+        }),
+        execute: async () => ({team: team}),
       }),
     },
     messages,

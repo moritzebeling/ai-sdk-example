@@ -1,14 +1,16 @@
 <script lang="ts">
 
-  import Bubble from "./Bubble.svelte";
+  import Bubble from "./widgets/Bubble.svelte";
   import Time from "./widgets/Time.svelte";
   import Theme from "./widgets/Theme.svelte";
   import Weather from "./widgets/Weather.svelte";
+  import Team from "./widgets/Team.svelte";
 
   const widgets = {
     time: Time,
     theme: Theme,
     weather: Weather,
+    team: Team,
   };
 
   export let messages;
