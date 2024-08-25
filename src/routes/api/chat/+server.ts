@@ -28,10 +28,21 @@ export const POST = (async ({ request }) => {
       time: tool({
         description: 'Get the current time',
         parameters: z.object({
-          empty: z.string().optional().describe('This is an empty parameter'),
+          empty: z.string().optional().describe('This is an empty parameter and can be ignored'),
         }),
         execute: async () => ({
           time: new Date().toLocaleTimeString(),
+        }),
+      }),
+      theme: tool({
+        description: 'Style the design of this application',
+        parameters: z.object({
+          element: z.enum(["background", "bubble", "text"]).describe('The element to style'),
+          color: z.string().describe('The color to set the element to'),
+        }),
+        execute: async ({ element, color }) => ({
+          element: element.toLowerCase(),
+          color
         }),
       }),
     },

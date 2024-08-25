@@ -15,6 +15,12 @@ a, button {
     cursor: pointer;
 }
 
+:root {
+    --background: #fff;
+    --bubble: #eee;
+    --text: #000;
+}
+
 html {
     font-size: 18px;
 }
@@ -23,6 +29,6 @@ body {
     font-family: 'Arial', sans-serif;
     font-size: 1rem;
     line-height: 1.5;
-    color: #000;
-    background-color: #fff;
+    background-color: var(--background);
+    color: var(--text);
 }

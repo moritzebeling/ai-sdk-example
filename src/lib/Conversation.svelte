@@ -2,9 +2,11 @@
 
   import Bubble from "./Bubble.svelte";
   import Time from "./widgets/Time.svelte";
+  import Theme from "./widgets/Theme.svelte";
 
   const widgets = {
-    time: Time
+    time: Time,
+    theme: Theme
   };
 
   export let messages;
@@ -15,16 +17,15 @@
   {#each messages as message}
     <li class="role-{message.role}">
       {#if message.role === 'assistant' && message?.toolInvocations?.length}
-        {#each message.toolInvocations as toolInvocation}
-          {#if widgets.hasOwnProperty(toolInvocation.toolName)}
-            <svelte:component this={widgets[toolInvocation.toolName]} {...toolInvocation.result} />
-          {:else}
-            <Bubble message={message}>
-              {toolInvocation.toolName}:
-              <pre>{JSON.stringify(toolInvocation?.result, null, 2)}</pre>
-            </Bubble>
-          {/if}
-        {/each}
+        {@const tool = message?.toolInvocations[message?.toolInvocations?.length - 1]}
+        {#if widgets.hasOwnProperty(tool.toolName)}
+          <svelte:component this={widgets[tool.toolName]} {...tool.result} />
+        {:else}
+          <Bubble message={message}>
+            {tool.toolName}:
+            <pre>{JSON.stringify(tool?.result, null, 2)}</pre>
+          </Bubble>
+        {/if}
       {:else}
         <Bubble message={message} />
       {/if}

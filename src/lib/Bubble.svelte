@@ -29,7 +29,8 @@
 
   .bubble {
     padding: 1rem 2rem;
-    background-color: #eee;
+    background-color: var(--bubble);
+    color: var(--text);
     border-radius: 2rem;
   }
 

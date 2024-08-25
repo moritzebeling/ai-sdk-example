@@ -28,7 +28,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #fff;
+    background-color: var(--background);
   }
   aside div {
     max-width: 800px;

@@ -37,7 +37,7 @@
 
   .bubble {
     padding: 1rem 2rem;
-    background-color: #eee;
+    background-color: var(--bubble);
     border-radius: 2rem;
     text-align: center;
     font-size: 3rem;
