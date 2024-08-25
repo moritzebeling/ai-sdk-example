@@ -20,10 +20,31 @@ export const POST = (async ({ request }) => {
         parameters: z.object({
           location: z.string().describe('The location to get the weather for'),
         }),
-        execute: async ({ location }) => ({
-          location,
-          temperature: 72 + Math.floor(Math.random() * 21) - 10,
-        }),
+        execute: async ({ location }) => {
+          const id = location.toLowerCase().replace('münchen', 'munich')
+
+          let temperature = Math.floor(Math.random() * 10) + 18
+          let description = `The weather in ${location} is ${temperature} degrees`
+
+          if(id === 'hamburg') {
+            location = 'JvM Hamburg Headquarters'
+            temperature = 20
+            description = 'Be prepared for everything...'
+          } else if(id === 'berlin') {
+            location = 'JvM Berlin Office'
+            temperature = 22
+            description = 'Better than Hamburg'
+          } else if(id === 'munich') {
+            temperature = 24
+            description = 'Why don’t we have a TECH office in munich??'
+          }
+          
+          return {
+            location,
+            temperature,
+            description,
+          }
+        },
       }),
       time: tool({
         description: 'Get the current time',
@@ -38,7 +59,7 @@ export const POST = (async ({ request }) => {
         description: 'Style the design of this application',
         parameters: z.object({
           element: z.enum(["background", "bubble", "text"]).describe('The element to style'),
-          color: z.string().describe('The color to set the element to'),
+          color: z.string().describe('The color to set the element to. Must be a valid CSS color'),
         }),
         execute: async ({ element, color }) => ({
           element: element.toLowerCase(),

@@ -11,22 +11,17 @@
 
 </script>
 
-<div class="line">
-  <div class="bubble" style="background-color: {color};"></div>
+<div>
+  Set {element} to {color}
 </div>
 
 <style>
 
-  .line {
-    display: flex;
-    justify-content: center;
-  }
-
-  .bubble {
-    width: 8rem;
-    height: 8rem;
-    border-radius: 8rem;
-    border: 2px solid black;
+  div {
+    text-align: center;
+    padding: 0 4rem;
+    font-size: 0.8rem;
+    color: var(--bubble);
   }
 
 </style>

@@ -3,10 +3,12 @@
   import Bubble from "./Bubble.svelte";
   import Time from "./widgets/Time.svelte";
   import Theme from "./widgets/Theme.svelte";
+  import Weather from "./widgets/Weather.svelte";
 
   const widgets = {
     time: Time,
-    theme: Theme
+    theme: Theme,
+    weather: Weather,
   };
 
   export let messages;
