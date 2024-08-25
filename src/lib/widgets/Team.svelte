@@ -1,13 +1,38 @@
 <script lang="ts">
 
   export let team = [];
+  export let sort;
+
+  let displayedTeam = team;
+
+  function sortTeam(_s) {
+    if (sort) {
+      displayedTeam = [...team].sort((a, b) => {
+        if (sort === 'asc') {
+          return a.localeCompare(b);
+        } else {
+          return b.localeCompare(a);
+        }
+      });
+    }
+  }
+
+  $: sortTeam(sort);
 
 </script>
 
 <div>
   <ul>
-    <li class="sticky">Jung von Matt TECH</li>
-    {#each team as name}
+    <li class="sticky header">
+      Jung von Matt TECH
+      {#if sort}
+        <select bind:value={sort}>
+          <option value="asc">A – Z</option>
+          <option value="desc">Z – A</option>
+        </select>
+      {/if}
+    </li>
+    {#each displayedTeam as name}
       <li>
         <div class="icon"><i>{name.substring(0,1)}</i></div>
         <h3>{name}</h3>
@@ -26,7 +51,7 @@
     border-radius: 1rem;
     max-width: 20rem;
     margin: 0 auto;
-    max-height: 60vh;
+    max-height: 50vh;
     overflow-y: auto;
   }
 
@@ -44,6 +69,11 @@
     border-bottom: 1px solid var(--background);
   }
 
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+
   li + li {
     border-bottom: 1px solid var(--background);
   }
@@ -56,6 +86,10 @@
     margin-right: 1rem;
     text-align: center;
     width: 2rem;
+  }
+
+  select {
+    background: none;
   }
 
 </style>

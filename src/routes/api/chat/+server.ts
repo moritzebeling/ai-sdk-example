@@ -68,11 +68,16 @@ export const POST = (async ({ request }) => {
         }),
       }),
       team: tool({
-        description: 'Get a list of people who is in the team of Jung von Matt TECH (JvM)',
+        description: 'Get a list of people who are in the team of Jung von Matt TECH (JvM)',
         parameters: z.object({
-          empty: z.string().optional().describe('This is an empty parameter and can be ignored'),
+          sort: z.enum(["none", "asc", "desc"]).optional().describe('Optional sorting of the team members'),
         }),
-        execute: async () => ({team: team}),
+        execute: async ({ sort }) => {
+          return {
+            sort: ['asc', 'desc'].includes(sort) ? sort : undefined,
+            team: sort === 'asc' ? team.sort() : sort === 'desc' ? team.sort().reverse() : team
+          }
+        },
       }),
     },
     messages,
