@@ -5,12 +5,14 @@
   import Theme from "./widgets/Theme.svelte";
   import Weather from "./widgets/Weather.svelte";
   import Team from "./widgets/Team.svelte";
+  import Photos from "./widgets/Photos.svelte";
 
   const widgets = {
     time: Time,
     theme: Theme,
     weather: Weather,
     team: Team,
+    photos: Photos,
   };
 
   export let messages;
