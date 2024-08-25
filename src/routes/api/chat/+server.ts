@@ -5,6 +5,7 @@ import type { RequestHandler } from './$types';
 
 import { env } from '$env/dynamic/private';
 import { team } from '$lib/data/team';
+import { system } from '$lib/data/system';
 
 const openai = createOpenAI({
   apiKey: env.OPENAI_API_KEY ?? '',
@@ -15,6 +16,7 @@ export const POST = (async ({ request }) => {
 
   const result = await streamText({
     model: openai('gpt-4-turbo-preview'),
+    system,
     tools: {
       weather: tool({
         description: 'Get the weather in a location',
@@ -70,12 +72,12 @@ export const POST = (async ({ request }) => {
       team: tool({
         description: 'Get a list of people who are in the team of Jung von Matt TECH (JvM)',
         parameters: z.object({
-          sort: z.enum(["none", "asc", "desc"]).optional().describe('Optional sorting of the team members'),
+          sort: z.enum(["none", "asc", "desc"]).describe('Sorting of the team members, default is no sorting'),
         }),
         execute: async ({ sort }) => {
           return {
-            sort: ['asc', 'desc'].includes(sort) ? sort : undefined,
-            team: sort === 'asc' ? team.sort() : sort === 'desc' ? team.sort().reverse() : team
+            sort: sort === 'asc' || sort === 'desc' ? sort : undefined,
+            team: team
           }
         },
       }),

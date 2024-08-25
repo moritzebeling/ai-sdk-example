@@ -1,23 +1,18 @@
 <script lang="ts">
 
   export let team = [];
-  export let sort;
-
-  let displayedTeam = team;
+  export let sort = undefined;
 
   function sortTeam(_s) {
-    if (sort) {
-      displayedTeam = [...team].sort((a, b) => {
-        if (sort === 'asc') {
-          return a.localeCompare(b);
-        } else {
-          return b.localeCompare(a);
-        }
-      });
+    if (sort === 'asc') {
+      return [...team].sort();
+    } else if (sort === 'desc') {
+      return [...team].sort().reverse();
     }
+    return team;
   }
 
-  $: sortTeam(sort);
+  $: displayedTeam = sortTeam(team, sort);
 
 </script>
 
