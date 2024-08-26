@@ -22,7 +22,7 @@
 </script>
 
 <ul>
-  {#each messages as message}
+  {#each messages as message (message.id)}
     <li class="role-{message.role}">
       {#if message.role === 'assistant' && message?.toolInvocations?.length}
         {@const tool = message?.toolInvocations[message?.toolInvocations?.length - 1]}
@@ -39,7 +39,6 @@
       {/if}
     </li>
   {/each}
-  <li><Fielmann /></li>
 </ul>
 
 <style>

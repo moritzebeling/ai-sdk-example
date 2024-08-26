@@ -1,27 +1,25 @@
-<script>
+<script lang="ts">
     
     import { addToCart } from "$lib/cart/cart";
 
-    const product = {
-        brand: 'Fielmann',
-        model: 'SUN FA CARRY',
-        img: 'https://fim-live.cdn.aboutyou.cloud/images/04e3e03f01dbf37719155658247e03dd.png?brightness=1&width=3072&height=1720&quality=85&bg=FFFFFF',
-        price: '29.90',
-    }
+    export let product;
 
 </script>
 
+{#if product}
 <div class="line">
-    <article>
-        <figure>
-            <img src={product.img} alt="{product.brand} {product.model}">
-        </figure>
-        <header>
-            <h3>{product.brand} {product.model}</h3>
-            <button on:click={() => addToCart(product)}>{product.price}</button>
-        </header>
-    </article>
-</div>
+    <!-- <pre>{JSON.stringify(product, null, 2)}</pre> -->
+        <article>
+            <figure>
+                <img src={product?.img} alt="{product?.brand} {product?.model}">
+            </figure>
+            <header>
+                <h3>{product?.brand} {product?.model}</h3>
+                <button on:click={() => addToCart(product)}>{product?.price}</button>
+            </header>
+        </article>
+    </div>
+{/if}
 
 <style>
 

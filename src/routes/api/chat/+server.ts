@@ -6,6 +6,7 @@ import type { RequestHandler } from './$types';
 import { env } from '$env/dynamic/private';
 import { team } from '$lib/data/team';
 import { system } from '$lib/data/system';
+import { sunglasses } from '$lib/data/fielmann';
 
 const openai = createOpenAI({
   apiKey: env.OPENAI_API_KEY ?? '',
@@ -32,14 +33,14 @@ export const POST = (async ({ request }) => {
           if(id === 'hamburg') {
             location = 'JvM Hamburg Headquarters'
             temperature = 20
-            description = 'Be prepared for everything...'
+            description = 'Sun? Rain? Who knows ...'
           } else if(id === 'berlin') {
             location = 'JvM Berlin Office'
             temperature = 22
             description = 'Better than Hamburg'
           } else if(id === 'munich') {
             temperature = 24
-            description = 'Why don’t we have a TECH office in munich??'
+            description = 'Why don’t we have a TECH office in munich?'
           }
           
           return {
@@ -89,6 +90,17 @@ export const POST = (async ({ request }) => {
         execute: async ({ count }) => {
           return {
             count
+          }
+        },
+      }),
+      fielmann: tool({
+        description: 'Suggest and display a pair of sunglasses from Fielmann',
+        parameters: z.object({
+          productId: z.number().min(1).max(3).describe('The product ID of the glasses'),
+        }),
+        execute: async ({ productId }) => {
+          return {
+            product: sunglasses.find(sunglasses => sunglasses.id === productId)
           }
         },
       }),

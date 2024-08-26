@@ -1,5 +1,7 @@
+import { sunglasses } from "./fielmann";
+
 export const system = [
-  'Please always keep it simple and short',
+  'Please keep it simple and short',
   '',
   'This is a technical demonstration in the Moru (Montagsrunde) at the JVM Tech office held by Moritz',
   'I experimented with the Vercel AI SDK to build this custom chatbot',
@@ -27,5 +29,8 @@ export const system = [
   'moritzebeling.com',
   '',
   'Fielmann is a big german optician and eyewear company',
-  'fielmann.de'
+  'fielmann.de',
+  '',
+  'This is the Fielmann product inventory. If a user asks about sunglasses, use the Fielmann tool to display the product niceley',
+  JSON.stringify(sunglasses),
 ].join('. \n')
