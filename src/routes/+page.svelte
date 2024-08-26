@@ -1,5 +1,6 @@
 <script lang="ts">
-  import Conversation from '$lib/Conversation.svelte';
+  import Cart from '$lib/cart/Cart.svelte';
+import Conversation from '$lib/Conversation.svelte';
   import PromptInput from '$lib/PromptInput.svelte';
   import { useChat } from '@ai-sdk/svelte';
 
@@ -15,6 +16,8 @@
     <PromptInput bind:input={$input} on:submit={handleSubmit} />
   </div>
 </aside>
+
+<Cart />
 
 <style>
   main {
