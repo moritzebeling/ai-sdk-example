@@ -15,6 +15,11 @@ a, button {
     cursor: pointer;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 :root {
     --background: #fff;
     --bubble: #eee;

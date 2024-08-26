@@ -6,6 +6,7 @@
   import Weather from "./widgets/Weather.svelte";
   import Team from "./widgets/Team.svelte";
   import Photos from "./widgets/Photos.svelte";
+  import Fielmann from "./widgets/Fielmann.svelte";
 
   const widgets = {
     time: Time,
@@ -13,6 +14,7 @@
     weather: Weather,
     team: Team,
     photos: Photos,
+    fielmann: Fielmann,
   };
 
   export let messages;
@@ -37,6 +39,7 @@
       {/if}
     </li>
   {/each}
+  <li><Fielmann /></li>
 </ul>
 
 <style>

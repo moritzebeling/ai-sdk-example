@@ -30,8 +30,6 @@ figure {
 
 img {
     display: block;
-    width: 100%;
-    height: auto;
     border-radius: 1rem;
     transition: transform 0.3s;
 }
