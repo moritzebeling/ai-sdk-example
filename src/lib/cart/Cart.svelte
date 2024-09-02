@@ -34,7 +34,7 @@
                         <p>{renderCurrency(sum)}</p>
                     </div>
                     <div class="checkout">
-                        <button>Checkout</button>
+                        <a href="/summary">Checkout</a>
                     </div>
                 </footer>
             </div>
@@ -54,12 +54,12 @@
         z-index: 999;
     }
     
-    button {
+    button, a {
         padding: 0.3rem 1rem;
         border-radius: 2rem;
         transition: all 1s;
     }
-    button:hover {
+    button:hover, a:hover {
         background-color: var(--text);
         color: var(--background);
     }
@@ -100,7 +100,8 @@
         padding: 3rem;
     }
 
-    .checkout button {
+    .checkout a {
+        text-decoration: none;
         background-color: var(--text);
         color: var(--background);
     }
