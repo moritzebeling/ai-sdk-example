@@ -1,6 +1,6 @@
 <script lang="ts">
   import Cart from '$lib/cart/Cart.svelte';
-import Conversation from '$lib/Conversation.svelte';
+  import Conversation from '$lib/Conversation.svelte';
   import PromptInput from '$lib/PromptInput.svelte';
   import { useChat } from '@ai-sdk/svelte';
 

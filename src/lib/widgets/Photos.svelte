@@ -1,19 +1,19 @@
 <script>
 
-    const images = [
-        '/holiday/sea-3.jpeg',
-        '/holiday/sea-2.jpeg',
-        '/holiday/sea-1.jpeg',
-    ];
+  const images = [
+    '/holiday/sea-3.jpeg',
+    '/holiday/sea-2.jpeg',
+    '/holiday/sea-1.jpeg',
+  ];
 
 </script>
 
 <div>
-    {#each images as image, i}
-        <figure>
-            <img class="img-{i}" src={image} alt="Sea" />
-        </figure>
-    {/each}
+  {#each images as image, i}
+    <figure>
+      <img class="img-{i}" src={image} alt="Sea" />
+    </figure>
+  {/each}
 </div>
 
 <style>

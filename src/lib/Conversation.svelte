@@ -8,7 +8,7 @@
   import Photos from "./widgets/Photos.svelte";
   import Fielmann from "./widgets/Fielmann.svelte";
 
-  const widgets = {
+  const widgets = <Partial<Record<string, any>>>{
     time: Time,
     theme: Theme,
     weather: Weather,

@@ -1,9 +1,9 @@
 <script lang="ts">
 
-  export let team = [];
-  export let sort = undefined;
+  export let team = <String[]>[];
+  export let sort = <undefined|'asc'|'desc'>undefined;
 
-  function sortTeam(_s) {
+  function sortTeam(_team, _sort) {
     if (sort === 'asc') {
       return [...team].sort();
     } else if (sort === 'desc') {
