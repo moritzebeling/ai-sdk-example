@@ -1,6 +1,6 @@
 import { sunglasses } from "./fielmann";
 
-export const system = [
+export const systemprompt = [
   'Please keep it simple and short',
   '',
   'This is a technical demonstration in the Moru (Montagsrunde) at the JVM Tech office held by Moritz',
